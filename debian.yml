@@ -1,0 +1,30 @@
+config:
+  cloud-init.user-data: |-
+    #cloud-config
+    locale: en_US
+    timezone: "Europe/Budapest"
+    package_update: true
+    package_upgrade: true
+    packages:
+      - ansible
+    runcmd:
+      - [ wget, "https://raw.githubusercontent.com/zbalint/ansible-playbooks/master/debian/debian.ansible.yml", -O, "/run/debian.ansible.yml" ]
+      - [ ansible-playbook, /run/debian.ansible.yml ]
+  limits.cpu: '1'
+  limits.memory: 1GB
+  security.idmap.isolated: 'true'
+  security.nesting: 'true'
+  security.protection.shift: 'true'
+  snapshots.expiry: 1w
+  snapshots.schedule: '@daily'
+description: Debian profile for docker VM
+devices:
+  eth0:
+    network: incusbr0
+    type: nic
+  root:
+    path: /
+    pool: default
+    size: 4GiB
+    type: disk
+name: debian
