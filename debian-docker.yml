@@ -28,4 +28,4 @@ devices:
     pool: default
     size: 10GiB
     type: disk
-name: debian
+name: debian-docker
