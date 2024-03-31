@@ -19,7 +19,7 @@ config:
   security.secureboot: 'false'
   snapshots.expiry: 1w
   snapshots.schedule: '@daily'
-description: Apline profile for docker VM
+description: Apline profile for docker VMs
 devices:
   eth0:
     network: incusbr0

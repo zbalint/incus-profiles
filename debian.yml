@@ -9,8 +9,8 @@ config:
     packages:
       - ansible
     runcmd:
-      - [ wget, "https://raw.githubusercontent.com/zbalint/ansible-playbooks/master/debian/ansible/debian-docker.ansible.yml", -O, "/run/debian-docker.ansible.yml" ]
-      - [ ansible-playbook, /run/debian-docker.ansible.yml ]
+      - [ wget, "https://raw.githubusercontent.com/zbalint/ansible-playbooks/master/debian/ansible/debian.ansible.yml", -O, "/run/debian.ansible.yml" ]
+      - [ ansible-playbook, /run/debian.ansible.yml ]
   limits.cpu: '1'
   limits.memory: 1GB
   security.idmap.isolated: 'true'
@@ -18,7 +18,7 @@ config:
   security.protection.shift: 'true'
   snapshots.expiry: 1w
   snapshots.schedule: '@daily'
-description: Debian profile for docker VMs
+description: Debian profile for VMs
 devices:
   eth0:
     network: incusbr0
@@ -28,4 +28,4 @@ devices:
     pool: default
     size: 10GiB
     type: disk
-name: debian-docker
+name: debian
